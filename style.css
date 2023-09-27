@@ -1,0 +1,9 @@
+.hidden {
+  background-color: grey;
+  color: transparent;
+}
+
+.hidden:hover {
+  background-color: transparent;
+  color: black;
+}
