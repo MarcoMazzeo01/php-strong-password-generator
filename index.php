@@ -1,12 +1,14 @@
 <?php
-$pw_chars = "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789!£$%&";
+$pw_chars = "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789!#@%";
 
 if (isset($_GET["psw_length"])) {
     $selected_length = $_GET["psw_length"];
     $newPsw = '';
 
     for ($i = 0; $i <= $selected_length; $i++) {
-        $newChar = $pw_chars[rand(1, strlen($pw_chars)-1)];
+        $ran = rand(0, strlen($pw_chars)-1);
+        // echo $ran . " " . strlen($pw_chars)-1 . "<br>";
+        $newChar = $pw_chars[$ran];
         $newPsw .= $newChar;
     }
 
@@ -35,14 +37,14 @@ if (isset($_GET["psw_length"])) {
             <div class="card-body">
                 <form method="get" action=".">
                     <label for="psw_length" class="form-label">Lunghezza Password (10-50 caratteri)</label>
-                    <input type="range" class="form-range" id="psw_length" name="psw_length" min="10" max="50" step="1" value="10">
+                    <input type="range" class="form-range" id="psw_length" name="psw_length" min="10" max="60" step="1" value="<? echo (isset($_GET['psw_length'])) ? $_GET['psw_length'] : '10'  ?>">
                     <p><strong>Lunghezza:</b> <span id="selectedLength"></span></p>
 
                     <button type="submit" class="btn btn-primary" >Genera Password</button>
 
                     <?php if (!empty($newPsw)): ?>
 
-                        <p><strong>Password Generata: </strong> <? echo $newPsw ?></p>
+                        <p><strong>Password Generata:</strong> <? echo $newPsw ?></p>
                     <?php endif; ?>
                 </form>
             </div>
