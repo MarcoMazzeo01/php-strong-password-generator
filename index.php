@@ -1,6 +1,6 @@
 <?php
 
-$pw_chars = "asdfghjkl"
+$pw_chars = "abcdefghijklmnopqrstuvwxyz0123456789!£$%&/()=-.,'_|"
 
 ?>
 
@@ -24,10 +24,12 @@ $pw_chars = "asdfghjkl"
         <div class="card mt-5">
             <div class="card-header"><h1>Safe Password Generator</h1></div>
             <div class="card-body">
-                <form method="get">
+                <form method="get" action=".">
                     <label for="psw_length" class="form-label">Lunghezza Password (10-50 caratteri)</label>
-                    <input type="range" class="form-range" id="psw_length" min="10" max="50" step="1" value="10">
+                    <input type="range" class="form-range" id="psw_length" name="psw_length" min="10" max="50" step="1" value="10">
                     <p><strong>Lunghezza:</b> <span id="selectedLength"></span></p>
+
+                    <button type="submit" class="btn btn-primary" >Genera Password</button>
                 </form>
             </div>
         </div>
