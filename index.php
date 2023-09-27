@@ -1,7 +1,16 @@
 <?php
+$pw_chars = "abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ-0123456789!£$%&";
 
-$pw_chars = "abcdefghijklmnopqrstuvwxyz0123456789!£$%&/()=-.,'_|"
+if (isset($_GET["psw_length"])) {
+    $selected_length = $_GET["psw_length"];
+    $newPsw = '';
 
+    for ($i = 0; $i <= $selected_length; $i++) {
+        $newChar = $pw_chars[rand(1, strlen($pw_chars)-1)];
+        $newPsw .= $newChar;
+    }
+
+}
 ?>
 
 
@@ -30,10 +39,14 @@ $pw_chars = "abcdefghijklmnopqrstuvwxyz0123456789!£$%&/()=-.,'_|"
                     <p><strong>Lunghezza:</b> <span id="selectedLength"></span></p>
 
                     <button type="submit" class="btn btn-primary" >Genera Password</button>
+
+                    <?php if (!empty($newPsw)): ?>
+
+                        <p><strong>Password Generata: </strong> <? echo $newPsw ?></p>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
     </div>
-
 </body>
 </html>
